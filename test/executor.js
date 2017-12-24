@@ -29,4 +29,22 @@ exports['execute evaluate'] = function (test) {
 	});
 };
 
+exports['execute with variables'] = function (test) {
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.value('one', 1);
+	executor.value('two', 2);
+	
+	executor.execute('evaluate one + two', function (err, data) {
+		test.ok(!err);
+		test.equal(data, 3);
+		test.equal(executor.value('value'), 3);
+		
+		test.done();
+	});
+};
+
+
 
