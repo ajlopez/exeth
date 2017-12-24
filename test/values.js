@@ -20,3 +20,11 @@ exports['evaluate expression with constants'] = function (test) {
 	test.equal(vals.evaluate('1+2'), 3);
 }
 
+exports['evaluate expression with variables'] = function (test) {
+	var vals = values.values();
+	
+	vals.value('one', 1);
+	vals.value('two', 2)
+	
+	test.equal(vals.evaluate('one + two'), 3);
+}
