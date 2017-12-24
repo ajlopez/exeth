@@ -50,6 +50,32 @@ exports['execute accounts script'] = function (test) {
 	});
 };
 
+exports['get balance'] = function (test) {
+	var provider = createProvider();
+	
+	test.async();
+	
+	provider.eth_getBalance = function (address, block) {
+		test.equal(address, '0x123456')
+		test.equal(block, 'latest');
+		return '0x2a'
+	};
+	
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.host(provider);
+	
+	executor.execute('balance 0x123456', function (err, data) {
+		test.ok(!err);
+		test.equal(data, '0x2a');
+		test.deepEqual(executor.value('value'), '0x2a');
+		
+		test.done();
+	});
+};
+
 function getScriptFile(name) {
 	return path.join(__dirname, 'scripts', name + '.eth');
 }
