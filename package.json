@@ -23,7 +23,8 @@
   "dependencies": {
     "rskapi": "0.0.6",
     "simpleargs": "0.0.3",
-    "simpledsl": "0.0.4"
+    "simpledsl": "0.0.4",
+    "solc": "^0.4.19"
   },
   "devDependencies": {
     "simpleunit": "0.0.7"
