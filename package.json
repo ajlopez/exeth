@@ -20,7 +20,11 @@
   "scripts": {
     "test": "simpleunit -r ./test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rskapi": "0.0.6",
+    "simpleargs": "0.0.3",
+    "simpledsl": "0.0.4"
+  },
   "devDependencies": {
     "simpleunit": "0.0.7"
   }
