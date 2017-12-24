@@ -77,6 +77,37 @@ exports['execute set variable to arithmetic expression using variables'] = funct
 	});
 };
 
+exports['execute accounts'] = function (test) {
+	var provider = createProvider();
+	var accounts = [ '0x01', '0x02', '0x03' ];
+	
+	provider.eth_accounts = function (hash) {
+		return accounts;
+	};
+
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.host(provider);
+	
+	executor.execute('accounts', function (err, data) {
+		test.ok(!err);
+		test.deepEqual(data, accounts);
+		test.deepEqual(executor.value('accounts'), accounts);
+		test.deepEqual(executor.value('value'), accounts);
+		
+		test.done();
+	});
+};
+
+function createProvider() {
+	return {
+		call: function (method, args, cb) {
+			cb(null, this[method].apply(this,args));
+		}
+	}
+}
 
 
 
