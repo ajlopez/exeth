@@ -14,3 +14,9 @@ exports['set and get value'] = function (test) {
 	test.equal(vals.value('foo'), 'bar');
 }
 
+exports['evaluate expression with constants'] = function (test) {
+	var vals = values.values();
+	
+	test.equal(vals.evaluate('1+2'), 3);
+}
+
