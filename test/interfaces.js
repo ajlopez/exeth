@@ -21,5 +21,59 @@ exports['get constructor using string interface'] = function (test) {
 	test.deepEqual(cons.inputs, []);
 }
 
+exports['parse function signature with two arguments'] = function (test) {
+	var result = interfaces.parseSignature('add(uint256,string)');
+	
+	test.ok(result);
+	test.equal(result.name, 'add');
+	test.deepEqual(result.types, [ 'uint256', 'string' ]);
+}
 
+exports['parse function signature without arguments'] = function (test) {
+	var result = interfaces.parseSignature('increment()');
+	
+	test.ok(result);
+	test.equal(result.name, 'increment');
+	test.deepEqual(result.types, []);
+}
+
+exports['get function definition'] = function (test) {
+	var fndef = interfaces.getFunction('increment()', counterabi);
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'increment');
+	test.deepEqual(fndef.inputs, []);
+	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+}
+
+exports['get function definition using string interface'] = function (test) {
+	var fndef = interfaces.getFunction('increment()', JSON.strinfigy(counterabi));
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'increment');
+	test.deepEqual(fndef.inputs, []);
+	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+}
+
+exports['get function definition with one argument'] = function (test) {
+	var fndef = interfaces.getFunction('add(uint256)', counterabi);
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'increment');
+	test.deepEqual(fndef.inputs, []);
+	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+}
+
+exports['get function definition with one argument using string interface'] = function (test) {
+	var fndef = interfaces.getFunction('add(uint256)', JSON.strinfigy(counterabi));
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'increment');
+	test.deepEqual(fndef.inputs, []);
+	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+}
 
