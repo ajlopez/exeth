@@ -9,5 +9,13 @@ contract Federation {
 	function federationSize() constant public returns (uint) {
 		return federators.length;
 	}
+	
+	function isFederator(address addr) constant public returns(bool) {
+		for (uint16 k; k < federators.length; k++)
+			if (addr == federators[k])
+				return true;
+				
+		return false;
+	}
 }
 
