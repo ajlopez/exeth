@@ -1,0 +1,32 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/greeter.sol"
+dump contracts.Greeter.functionHashes
+
+# deploy instances, using default sender: accounts[0], message default value: 0
+# first argument: contract name
+# second argument: new instance name
+
+message "deploy instance..."
+deploy Greeter greeter
+
+# show instance address
+# (instances variable has the instances data)
+
+message "new instance" instances.greeter.address
+
+# get message
+
+call greeter message()
+
+message "message" value
+
+message "done"
