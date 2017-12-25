@@ -23,3 +23,8 @@ deploy Counter counter
 
 message "new instance" instances.counter.address
 
+# get counter
+
+call counter getCounter()
+message "counter" value
+
