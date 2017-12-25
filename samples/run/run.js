@@ -13,6 +13,9 @@ var args = options._;
 if (options.logging)
 	executor.logging(true);
 
+if (options.host)
+	executor.host(options.host);
+
 executor.executeFile(args[0], function (err, data) {
 	if (err)
 		console.error(err);
