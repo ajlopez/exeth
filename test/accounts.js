@@ -50,7 +50,7 @@ exports['execute accounts script'] = function (test) {
 	});
 };
 
-exports['get balance'] = function (test) {
+exports['execute balance'] = function (test) {
 	var provider = createProvider();
 	
 	test.async();
@@ -68,6 +68,31 @@ exports['get balance'] = function (test) {
 	executor.host(provider);
 	
 	executor.execute('balance 0x123456', function (err, data) {
+		test.ok(!err);
+		test.equal(data, '0x2a');
+		test.deepEqual(executor.value('value'), '0x2a');
+		
+		test.done();
+	});
+};
+
+exports['execute accountnew'] = function (test) {
+	var provider = createProvider();
+	
+	test.async();
+	
+	provider.personal_newAccount = function (passphrase) {
+		test.equal(passphrase, 'passphrase');
+		return '0x2a';
+	};
+	
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.host(provider);
+	
+	executor.execute('accountnew "passphrase"', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x2a');
 		test.deepEqual(executor.value('value'), '0x2a');
