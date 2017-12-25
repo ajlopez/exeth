@@ -28,3 +28,12 @@ message "new instance" instances.counter.address
 call counter getCounter()
 message "counter" value
 
+# invoke increment (default sender: accounts[0])
+
+message "increment..."
+invoke counter increment()
+
+# get counter
+
+call counter getCounter()
+message "counter" value
