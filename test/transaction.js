@@ -7,6 +7,7 @@ exports['execute transfer'] = function (test) {
 	
 	var provider = createProvider();
 	var sent = false;
+	var retr = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -19,6 +20,14 @@ exports['execute transfer'] = function (test) {
 		return '0x100';
 	};
 
+	provider.eth_getTransactionReceipt = function (txhash) {
+		test.equal(txhash, '0x100');
+		
+		retr = true;
+		
+		return { hash: txhash };
+	};
+	
 	var executor = exeth.executor();
 	
 	executor.host(provider);
@@ -27,6 +36,9 @@ exports['execute transfer'] = function (test) {
 		test.ok(!err);
 		test.equal(data, '0x100');
 		test.deepEqual(executor.value('value'), '0x100');
+		
+		test.ok(sent);
+		test.ok(retr);
 		
 		test.done();
 	});
