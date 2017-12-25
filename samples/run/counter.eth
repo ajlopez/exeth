@@ -13,9 +13,6 @@ compile "./contracts/counter.sol"
 message "contract function hashes"
 dump contracts.Counter.functionHashes
 
-message "contract interface"
-dump JSON.parse(contracts.Counter.interface)
-
 # deploy instances, using default sender: accounts[0], message default value: 0
 # first argument: contract name
 # second argument: new instance name
