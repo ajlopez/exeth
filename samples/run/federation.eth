@@ -1,0 +1,19 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/federation.sol"
+
+message "contract function hashes"
+dump contracts.Federation.functionHashes
+
+message "contract interface"
+dump JSON.parse(contracts.Federation.interface)
+
+message "done"
