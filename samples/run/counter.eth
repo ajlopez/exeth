@@ -49,4 +49,17 @@ message "counter" counter
 
 assert counter == 2
 
+# invoke add (default sender: accounts[0])
+
+message "add 40..."
+invoke counter add(uint256) 40
+
+# get counter
+
+call counter getCounter()
+set counter value
+message "counter" counter
+
+assert counter == 42
+
 message "done"
