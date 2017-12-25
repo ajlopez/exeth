@@ -1,0 +1,17 @@
+
+# retrieve accounts
+
+accounts
+
+# compile contract
+
+compile "./contracts/counter.sol"
+
+# deploy instances, using default sender: accounts[0], message default value: 0
+
+deploy Counter counter
+
+# show instance address
+
+message "new instance" instances.counter.address
+
