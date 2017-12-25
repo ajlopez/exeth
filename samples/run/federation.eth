@@ -32,6 +32,8 @@ set n 0
 
 while n < accounts.length
 	call federation isFederator(address) accounts[n]
+
+	assert value === (n < 3)
 	
 	set negation value == 0 ? " not " : " "
 	
