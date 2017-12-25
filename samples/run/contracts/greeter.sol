@@ -2,8 +2,8 @@
 contract Greeter {
     string public message;
 
-    function Greeter() {
-        message = "Hello, Contract";
+    function Greeter(string msg) {
+        message = msg;
     }
     
     function setMessage(string msg) {

@@ -13,7 +13,16 @@ compile "./contracts/federation.sol"
 message "contract function hashes"
 dump contracts.Federation.functionHashes
 
-message "contract interface"
-dump JSON.parse(contracts.Federation.interface)
+# deploy contract with three accounts
+
+deploy Federation federation [accounts[0],accounts[1],accounts[2]]
+
+# federation size
+
+call federation federationSize()
+
+assert value == 3
+
+message "federation size" value
 
 message "done"

@@ -16,7 +16,7 @@ dump contracts.Greeter.functionHashes
 # second argument: new instance name
 
 message "deploy instance..."
-deploy Greeter greeter
+deploy Greeter greeter "hello greeter"
 
 # show instance address
 # (instances variable has the instances data)
@@ -28,5 +28,7 @@ message "new instance" instances.greeter.address
 call greeter message()
 
 message "message" value
+
+assert value === "hello greeter"
 
 message "done"
