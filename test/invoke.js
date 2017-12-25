@@ -2,7 +2,7 @@
 var exeth = require('..');
 var path = require('path');
 
-exports['compile and deploy contract'] = function (test) {
+exports['compile. deploy and invoke contract'] = function (test) {
 	test.async();
 	
 	var filename = path.join(__dirname, 'contracts', 'counter.sol');
@@ -11,21 +11,38 @@ exports['compile and deploy contract'] = function (test) {
 	var provider = createProvider();
 
 	var sent = false;
+	var invoked = false;
 	var retr = false;
+	var times = 0;
 	
 	provider.eth_sendTransaction = function (txdata) {
-		test.ok(txdata);
-		test.equal(txdata.from, '0x0100');
-		test.ok(!txdata.to);
-		test.equal(txdata.value, 0);
-		test.equal(txdata.gasPrice, 0);
-		test.equal(txdata.gas, 3000000);
+		if (times === 0) {
+			test.ok(txdata);
+			test.equal(txdata.from, '0x0100');
+			test.ok(!txdata.to);
+			test.equal(txdata.value, 0);
+			test.equal(txdata.gasPrice, 0);
+			test.equal(txdata.gas, 3000000);
+			
+			test.ok(txdata.data);
+			test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);
+			
+			sent = true;
+			times++;
+			
+			return '0x0200';
+		}
+		
+		if (times === 1) {
+			test.ok(txdata.data);
+			test.equal(txdata.data.length, 10);
+			test.equal(txdata.data, '0x' + executor.value('contracts').Counter.functionHashes["increment()"]);
 
-		test.ok(txdata.data);
-		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);
-
-		sent = true;
-		return '0x0200';
+			invoked = true;
+			times++;
+			
+			return '0x0200';
+		}
 	};
 
 	provider.eth_getTransactionReceipt = function (txhash) {
@@ -40,8 +57,9 @@ exports['compile and deploy contract'] = function (test) {
 	
 	executor.value('from', '0x0100');
 	
-	executor.execute(['compile ' + JSON.stringify(filename), 'deploy Counter counter'], function (err, data) {
+	executor.execute(['compile ' + JSON.stringify(filename), 'deploy Counter counter', 'invoke counter increment()'], function (err, data) {
 		test.ok(!err);
+		test.equal(data, '0x0200');
 		
 		test.ok(executor.value('contracts'));
 		

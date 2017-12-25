@@ -20,7 +20,12 @@ exports['compile. deploy and call contract'] = function (test) {
 		test.equal(txdata.value, 0);
 		test.equal(txdata.gasPrice, 0);
 		test.equal(txdata.gas, 3000000);
+
+		test.ok(txdata.data);
+		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);
+
 		sent = true;
+
 		return '0x0200';
 	};
 
@@ -31,8 +36,11 @@ exports['compile. deploy and call contract'] = function (test) {
 		test.equal(txdata.value, 0);
 		test.equal(txdata.gasPrice, 0);
 		test.equal(txdata.gas, 3000000);
+		
 		test.ok(txdata.data);
 		test.equal(txdata.data.length, 10);
+		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.functionHashes["getCounter()"]);
+		
 		sent = true;
 		return 1;
 	};
@@ -49,7 +57,7 @@ exports['compile. deploy and call contract'] = function (test) {
 	
 	executor.value('from', '0x0100');
 	
-	executor.execute(['compile ' + JSON.stringify(filename), 'deploy Counter counter', 'call counter increment()'], function (err, data) {
+	executor.execute(['compile ' + JSON.stringify(filename), 'deploy Counter counter', 'call counter getCounter()'], function (err, data) {
 		test.ok(!err);
 		test.equal(data, 1);
 		
