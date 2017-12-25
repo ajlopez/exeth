@@ -23,7 +23,7 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "rskapi": "0.0.6",
-    "simpleabi": "0.0.1",
+    "simpleabi": "0.0.2",
     "simpleargs": "0.0.3",
     "simpledsl": "0.0.4",
     "solc": "^0.4.19"
