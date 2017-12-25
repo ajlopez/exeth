@@ -29,7 +29,11 @@ message "new instance" instances.blockchain.address
 
 message "check block with hash" 0
 call blockchain blockInfos(uint256) 0
-assert value == 0
+
+assert value.length === 3
+assert value[0] == 0
+assert value[1] == 0
+assert value[2] == 0
 
 # add a block
 
@@ -38,7 +42,12 @@ invoke blockchain addBlock(uint32,uint256,uint256) 1 0x0100 0
 
 message "check block with hash" 0x0100
 call blockchain blockInfos(uint256) 0x0100
-assert value != 0
+
+assert value.length === 3
+assert value[0] == 1
+assert value[1] == 0x100
+assert value[2] == 0
+
 message "block info" value
 
 # add orphan block
@@ -48,7 +57,12 @@ invoke blockchain addBlock(uint32,uint256,uint256) 3 0x0300 0x0200
 
 message "check block with hash" 0x0300
 call blockchain blockInfos(uint256) 0x0300
-assert value == 0
+
+assert value.length === 3
+assert value[0] == 0
+assert value[1] == 0
+assert value[2] == 0
+
 message "block does not exist"
 
 message "done"
