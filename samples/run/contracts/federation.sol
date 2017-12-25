@@ -17,5 +17,14 @@ contract Federation {
 				
 		return false;
 	}
+	
+	function addFederator(address addr) public returns (bool) {
+		if (isFederator(addr))
+			return false;
+			
+		federators.push(addr);
+		
+		return true;
+	}
 }
 

@@ -40,4 +40,21 @@ while n < accounts.length
 	set n n + 1
 end
 
+# add an account that is a federator
+
+message "adding an existing federator"
+invoke federation addFederator(address) accounts[0]
+
+call federation federationSize()
+assert value == 3
+
+# add a new federator
+
+message "adding a new federator"
+invoke federation addFederator(address) accounts[3]
+
+call federation federationSize()
+assert value == 4
+
 message "done"
+
