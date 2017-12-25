@@ -44,17 +44,17 @@ exports['get function definition'] = function (test) {
 	test.equal(typeof fndef, 'object');
 	test.equal(fndef.name, 'increment');
 	test.deepEqual(fndef.inputs, []);
-	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+	test.deepEqual(fndef.outputs, []);
 }
 
 exports['get function definition using string interface'] = function (test) {
-	var fndef = interfaces.getFunction('increment()', JSON.strinfigy(counterabi));
+	var fndef = interfaces.getFunction('increment()', JSON.stringify(counterabi));
 	
 	test.ok(fndef);
 	test.equal(typeof fndef, 'object');
 	test.equal(fndef.name, 'increment');
 	test.deepEqual(fndef.inputs, []);
-	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
+	test.deepEqual(fndef.outputs, []);
 }
 
 exports['get function definition with one argument'] = function (test) {
@@ -62,17 +62,37 @@ exports['get function definition with one argument'] = function (test) {
 	
 	test.ok(fndef);
 	test.equal(typeof fndef, 'object');
-	test.equal(fndef.name, 'increment');
+	test.equal(fndef.name, 'add');
+	test.deepEqual(fndef.inputs, [ { name: 'v', type: 'uint256' }]);
+	test.deepEqual(fndef.outputs, []);
+}
+
+exports['get function definition with one argument using string interface'] = function (test) {
+	var fndef = interfaces.getFunction('add(uint256)', JSON.stringify(counterabi));
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'add');
+	test.deepEqual(fndef.inputs, [{ name: 'v', type: 'uint256' }]);
+	test.deepEqual(fndef.outputs, []);
+}
+
+exports['get function definition with return'] = function (test) {
+	var fndef = interfaces.getFunction('getCounter()', counterabi);
+	
+	test.ok(fndef);
+	test.equal(typeof fndef, 'object');
+	test.equal(fndef.name, 'getCounter');
 	test.deepEqual(fndef.inputs, []);
 	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
 }
 
 exports['get function definition with one argument using string interface'] = function (test) {
-	var fndef = interfaces.getFunction('add(uint256)', JSON.strinfigy(counterabi));
+	var fndef = interfaces.getFunction('getCounter()', JSON.stringify(counterabi));
 	
 	test.ok(fndef);
 	test.equal(typeof fndef, 'object');
-	test.equal(fndef.name, 'increment');
+	test.equal(fndef.name, 'getCounter');
 	test.deepEqual(fndef.inputs, []);
 	test.deepEqual(fndef.outputs, [ { name: '', type: 'uint256' }]);
 }
