@@ -1,0 +1,29 @@
+
+# retrieve accounts
+
+accounts
+
+# create new account
+
+accountnew "passphrase"
+
+set newacc value
+
+message "new account" newacc
+
+# balance new account
+
+balance newacc
+
+message "balance new account" value
+
+# transfer
+
+transfer accounts[0] newacc 1000
+
+message "transaction" value
+
+balance newacc
+
+message "balance new account" value
+
