@@ -22,9 +22,9 @@ deploy Federation federation [accounts[0],accounts[1],accounts[2]]
 
 call federation federationSize()
 
-assert value == 3
+assert result == 3
 
-message "federation size" value
+message "federation size" result
 
 # check federators
 
@@ -33,9 +33,9 @@ set n 0
 while n < accounts.length
 	call federation isFederator(address) accounts[n]
 
-	assert value === (n < 3)
+	assert result === (n < 3)
 	
-	set negation value == 0 ? " not " : " "
+	set negation result == 0 ? " not " : " "
 	
 	message accounts[n] ("is" + negation + "a federator")
 
@@ -48,7 +48,7 @@ message "adding an existing federator"
 invoke federation addFederator(address) accounts[0]
 
 call federation federationSize()
-assert value == 3
+assert result == 3
 
 # add a new federator
 
@@ -56,7 +56,7 @@ message "adding a new federator"
 invoke federation addFederator(address) accounts[3]
 
 call federation federationSize()
-assert value == 4
+assert result == 4
 
 message "done"
 

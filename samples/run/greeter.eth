@@ -11,7 +11,7 @@ message "compiling contract..."
 compile "./contracts/greeter.sol"
 dump contracts.Greeter.functionHashes
 
-# deploy instances, using default sender: accounts[0], message default value: 0
+# deploy instances, using default sender: accounts[0], message default result: 0
 # first argument: contract name
 # second argument: new instance name
 
@@ -27,8 +27,8 @@ message "new instance" instances.greeter.address
 
 call greeter message()
 
-message "message" value
+message "message" result
 
-assert value === "hello greeter"
+assert result === "hello greeter"
 
 message "done"

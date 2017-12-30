@@ -3,15 +3,15 @@
 
 blocknumber
 
-set bbnumber value
+set bbnumber result
 
 message "best block number" bbnumber
 
 # retrieve genesis block
 block 0
-dump value
+dump result
 
 # retrieve best block
 block bbnumber
-dump value
+dump result
 

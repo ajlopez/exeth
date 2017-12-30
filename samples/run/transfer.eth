@@ -7,7 +7,7 @@ accounts
 
 accountnew "passphrase"
 
-set newacc value
+set newacc result
 
 message "new account" newacc
 
@@ -15,15 +15,15 @@ message "new account" newacc
 
 balance newacc
 
-message "balance new account" value
+message "balance new account" result
 
 # transfer
 
 transfer accounts[0] newacc 1000
 
-message "transaction" value
+message "transaction" result
 
 balance newacc
 
-message "balance new account" value
+message "balance new account" result
 
