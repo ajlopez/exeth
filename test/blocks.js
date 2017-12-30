@@ -18,7 +18,7 @@ exports['execute blocknumber'] = function (test) {
 	executor.execute('blocknumber', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x2a');
-		test.equal(executor.value('value'), '0x2a');
+		test.equal(executor.value('result'), '0x2a');
 		
 		test.done();
 	});
@@ -42,7 +42,7 @@ exports['execute block'] = function (test) {
 	executor.execute('block 42', function (err, data) {
 		test.ok(!err);
 		test.deepEqual(data, { number: '0x2a' });
-		test.deepEqual(executor.value('value'), { number: '0x2a' });
+		test.deepEqual(executor.value('result'), { number: '0x2a' });
 		
 		test.done();
 	});

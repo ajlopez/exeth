@@ -35,7 +35,7 @@ exports['execute transfer'] = function (test) {
 	executor.execute('transfer 100 200 42', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x100');
-		test.deepEqual(executor.value('value'), '0x100');
+		test.deepEqual(executor.value('result'), '0x100');
 		
 		test.ok(sent);
 		test.ok(retr);
@@ -78,7 +78,7 @@ exports['execute transfer with data'] = function (test) {
 	executor.execute('transfer 100 200 42 "60606040"', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x100');
-		test.deepEqual(executor.value('value'), '0x100');
+		test.deepEqual(executor.value('result'), '0x100');
 		
 		test.ok(sent);
 		test.ok(retr);

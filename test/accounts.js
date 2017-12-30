@@ -20,7 +20,7 @@ exports['execute accounts'] = function (test) {
 		test.ok(!err);
 		test.deepEqual(data, accounts);
 		test.deepEqual(executor.value('accounts'), accounts);
-		test.deepEqual(executor.value('value'), accounts);
+		test.deepEqual(executor.value('result'), accounts);
 		
 		test.done();
 	});
@@ -44,7 +44,7 @@ exports['execute accounts script'] = function (test) {
 		test.ok(!err);
 		test.deepEqual(data, accounts);
 		test.deepEqual(executor.value('accounts'), accounts);
-		test.deepEqual(executor.value('value'), accounts);
+		test.deepEqual(executor.value('result'), accounts);
 		
 		test.done();
 	});
@@ -70,7 +70,7 @@ exports['execute balance'] = function (test) {
 	executor.execute('balance 0x123456', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x2a');
-		test.deepEqual(executor.value('value'), '0x2a');
+		test.deepEqual(executor.value('result'), '0x2a');
 		
 		test.done();
 	});
@@ -95,7 +95,7 @@ exports['execute accountnew'] = function (test) {
 	executor.execute('accountnew "passphrase"', function (err, data) {
 		test.ok(!err);
 		test.equal(data, '0x2a');
-		test.deepEqual(executor.value('value'), '0x2a');
+		test.deepEqual(executor.value('result'), '0x2a');
 		
 		test.done();
 	});

@@ -1,0 +1,30 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/math.sol"
+
+message "contract function hashes"
+dump contracts.Math.functionHashes
+
+dump contracts.Math
+
+# deploy instances, using default sender: accounts[0], message default value: 0
+# first argument: contract name
+# second argument: new instance name
+
+message "deploy instance..."
+deploy Math math
+
+# show instance address
+# (instances variable has the instances data)
+
+message "new instance" instances.math.address
+
+message "done"

@@ -24,7 +24,7 @@ exports['execute evaluate'] = function (test) {
 	executor.execute('evaluate 1+2', function (err, data) {
 		test.ok(!err);
 		test.equal(data, 3);
-		test.equal(executor.value('value'), 3);
+		test.equal(executor.value('result'), 3);
 		
 		test.done();
 	});
@@ -41,7 +41,7 @@ exports['execute with variables'] = function (test) {
 	executor.execute('evaluate one + two', function (err, data) {
 		test.ok(!err);
 		test.equal(data, 3);
-		test.equal(executor.value('value'), 3);
+		test.equal(executor.value('result'), 3);
 		
 		test.done();
 	});
