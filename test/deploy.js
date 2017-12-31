@@ -19,7 +19,7 @@ exports['compile and deploy contract'] = function (test) {
 		test.ok(!txdata.to);
 		test.equal(txdata.value, 0);
 		test.equal(txdata.gasPrice, 0);
-		test.equal(txdata.gas, 3000000);
+		test.equal(txdata.gas, 5000000);
 
 		test.ok(txdata.data);
 		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);

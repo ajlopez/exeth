@@ -15,7 +15,7 @@ exports['execute transfer'] = function (test) {
 		test.equal(txdata.to, 200);
 		test.equal(txdata.value, 42);
 		test.equal(txdata.gasPrice, 0);
-		test.equal(txdata.gas, 3000000);
+		test.equal(txdata.gas, 5000000);
 		sent = true;
 		return '0x100';
 	};
@@ -57,7 +57,7 @@ exports['execute transfer with data'] = function (test) {
 		test.equal(txdata.to, 200);
 		test.equal(txdata.value, 42);
 		test.equal(txdata.gasPrice, 0);
-		test.equal(txdata.gas, 3000000);
+		test.equal(txdata.gas, 5000000);
 		test.equal(txdata.data, "0x60606040");
 		sent = true;
 		return '0x100';
