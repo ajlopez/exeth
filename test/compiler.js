@@ -38,7 +38,7 @@ exports['compile contract with unlinked library'] = function (test) {
 	test.ok(bytecode.indexOf('_') > 0);
 	test.ok(bytecode.indexOf('ConvertLib') > 0);
 	
-	var linked = compiler.linkBytecode(bytecode, { 'ConvertLib.sol:ConvertLib' : '0x0102030405060708090a0b0c0d0e0f1011121314' });
+	var linked = compiler.linkBytecode(bytecode, { 'ConvertLib' : '0x0102030405060708090a0b0c0d0e0f1011121314' });
 	
 	test.ok(linked.indexOf('_') < 0);
 	test.ok(linked.indexOf('ConvertLib') < 0);
