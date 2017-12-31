@@ -25,3 +25,29 @@ exports['compile contract'] = function (test) {
 		test.done();
 	});
 };
+
+exports['execute compile script'] = function (test) {
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.executeFile(getScriptFile('compile'), function (err, data) {
+		test.ok(!err);
+
+		var contracts = executor.value('contracts');
+		
+		test.equal(Object.keys(contracts).length, 4);
+		test.ok(contracts.MetaCoin);
+
+		test.equal(contracts.MetaCoin.fullname, 'MetaCoin.sol:MetaCoin');
+		
+		test.done();
+		
+		test.done();
+	});
+};
+
+function getScriptFile(name) {
+	return path.join(__dirname, 'scripts', name + '.eth');
+}
+

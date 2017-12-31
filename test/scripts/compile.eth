@@ -1,0 +1,7 @@
+
+# Compile contract (path relative to this script)
+
+compile "../contracts/MetaCoin.sol"
+
+
+
