@@ -1,0 +1,56 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/bridge.sol"
+
+message "contract function hashes"
+dump contracts.Bridge.functionHashes
+
+# deploy instances, using default sender: accounts[0], message default result: 0
+# first argument: contract name
+# second argument: new instance name
+
+message "deploy instance..."
+set value 1000000
+deploy Bridge bridge
+
+# show instance address
+# (instances variable has the instances data)
+
+message "new instance" instances.bridge.address
+
+balance instances.bridge.address
+
+assert result == 1000000
+
+message "bridge balance" result
+
+# create new account
+
+accountnew "passphrase"
+
+set newacc result
+
+
+# transfer to another account
+
+set value 0
+invoke bridge transfer(address,uint256) newacc 10000
+
+balance newacc
+
+assert result == 10000
+
+message "receiver account balance" result
+
+balance instances.bridge.address
+message "bridge balance" result
+
+message "done"
