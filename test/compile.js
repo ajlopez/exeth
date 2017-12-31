@@ -19,6 +19,8 @@ exports['compile contract'] = function (test) {
 		test.equal(Object.keys(contracts).length, 2);
 		test.ok(contracts.Counter);
 		test.ok(contracts[filename + ':Counter']);
+
+		test.equal(contracts.Counter.fullname, 'counter.sol:Counter');
 		
 		test.done();
 	});
