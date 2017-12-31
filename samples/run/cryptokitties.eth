@@ -1,0 +1,28 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/cryptokitties.sol"
+
+message "contract function hashes"
+dump contracts.KittyCore.functionHashes
+
+# deploy instances, using default sender: accounts[0], message default result: 0
+# first argument: contract name
+# second argument: new instance name
+
+message "deploy instance..."
+deploy KittyCore kitties
+
+# show instance address
+# (instances variable has the instances data)
+
+message "new instance" instances.kitties.address
+
+message "done"
