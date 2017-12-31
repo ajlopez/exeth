@@ -1,0 +1,56 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/MetaCoin.sol"
+
+message "contract function hashes"
+dump contracts.MetaCoin.functionHashes
+
+# deploy library instance, using default sender: accounts[0], message default result: 0
+# first argument: library name
+# second argument: new instance name
+
+message "deploy library instance..."
+deploy ConvertLib convertlib
+
+# Link metacoin bytecode to new convertlib instance
+
+link MetaCoin convertlib
+
+# deploy instance, using default sender: accounts[0], message default result: 0
+
+message "deploy instance..."
+deploy MetaCoin metacoin
+
+# get token balance for creator accounts
+
+call metacoin getBalance(address) accounts[0]
+
+assert result == 10000
+
+# get token balance for another accounts
+
+call metacoin getBalance(address) accounts[1]
+
+assert result == 0
+
+# send coin
+
+invoke metacoin sendCoin(address,uint256) accounts[1] 1000
+
+call metacoin getBalance(address) accounts[0]
+
+assert result == 9000
+
+call metacoin getBalance(address) accounts[1]
+
+assert result == 1000
+
+message "done"
