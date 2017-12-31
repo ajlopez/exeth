@@ -1,0 +1,16 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/receiver.sol"
+
+message "contract function hashes"
+dump contracts.Receiver.functionHashes
+
+message "done"
