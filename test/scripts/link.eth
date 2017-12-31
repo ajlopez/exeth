@@ -1,0 +1,15 @@
+
+# Compile contract (path relative to this script)
+
+compile "../contracts/MetaCoin.sol"
+
+# Set dummy ConvertLib instance
+
+evaluate instances.convertlib = { contract: "ConvertLib", address: '0x0102030405060708090a0b0c0d0e0f1011121314' }
+
+# Link contract code to library instance
+
+link MetaCoin convertlib
+
+
+

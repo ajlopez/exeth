@@ -40,6 +40,29 @@ exports['execute compile script'] = function (test) {
 		test.ok(contracts.MetaCoin);
 
 		test.equal(contracts.MetaCoin.fullname, 'MetaCoin.sol:MetaCoin');
+		test.ok(contracts.MetaCoin.bytecode.indexOf('_') >= 0);
+		
+		test.done();
+		
+		test.done();
+	});
+};
+
+exports['execute link script'] = function (test) {
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.executeFile(getScriptFile('link'), function (err, data) {
+		test.ok(!err);
+
+		var contracts = executor.value('contracts');
+		
+		test.equal(Object.keys(contracts).length, 4);
+		test.ok(contracts.MetaCoin);
+
+		test.equal(contracts.MetaCoin.fullname, 'MetaCoin.sol:MetaCoin');
+		test.ok(contracts.MetaCoin.bytecode.indexOf('_') < 0);
 		
 		test.done();
 		
