@@ -65,8 +65,6 @@ exports['execute link script'] = function (test) {
 		test.ok(contracts.MetaCoin.bytecode.indexOf('_') < 0);
 		
 		test.done();
-		
-		test.done();
 	});
 };
 

@@ -43,3 +43,4 @@ exports['compile contract with unlinked library'] = function (test) {
 	test.ok(linked.indexOf('_') < 0);
 	test.ok(linked.indexOf('ConvertLib') < 0);
 };
+
