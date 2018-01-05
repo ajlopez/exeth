@@ -101,6 +101,39 @@ exports['execute accountnew'] = function (test) {
 	});
 };
 
+exports['execute accountnew and account unlock'] = function (test) {
+	var provider = createProvider();
+	
+	test.async();
+	
+	var unlocked = false;
+	
+	provider.personal_newAccount = function (passphrase) {
+		test.equal(passphrase, 'passphrase');
+		return '0x2a';
+	};
+	
+	provider.personal_unlockAccount = function (address, passphrase, duration) {
+		test.equal(address, '0x2a');
+		test.equal(passphrase, 'passphrase');
+		test.equal(duration, 10000);
+		unlocked = true;
+	};
+
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.host(provider);
+	
+	executor.execute(['accountnew "passphrase"', 'accountunlock result "passphrase" 10000'], function (err, data) {
+		test.ok(!err);
+		test.ok(unlocked);
+		
+		test.done();
+	});
+};
+
 function getScriptFile(name) {
 	return path.join(__dirname, 'scripts', name + '.eth');
 }
