@@ -1,0 +1,21 @@
+
+accounts
+
+set n 0
+
+set gas 30000
+
+while n < 5000
+	accountnew "passphrase"
+
+	set newacc result
+	
+	accountunlock newacc "passphrase" 1000
+
+	send newacc "0x0000000000000000000000000000000001000006" 0 "0x802ad4b6"
+	
+	set n n+1
+end
+
+
+

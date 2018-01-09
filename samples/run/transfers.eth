@@ -1,0 +1,28 @@
+
+# retrieve accounts
+
+accounts
+
+# create new account
+
+accountnew "passphrase"
+
+set newacc result
+
+message "new account" newacc
+
+set n 0
+
+set gas 30000
+
+while n < 5000
+	accountnew "passphrase"
+
+	set newacc result
+	
+	send "0xcd2a3d9f938e13cd947ec05abc7fe734df8dd826" newacc 1000
+	
+	set n n+1
+end
+
+
