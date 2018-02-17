@@ -45,12 +45,12 @@ assert result == 0
 
 invoke metacoin sendCoin(address,uint256) accounts[1] 1000
 
-call metacoin getBalance(address) accounts[0]
+# call metacoin getBalance(address) accounts[0]
 
-assert result == 9000
+# assert result == 9000
 
-call metacoin getBalance(address) accounts[1]
+# call metacoin getBalance(address) accounts[1]
 
-assert result == 1000
+# assert result == 1000
 
 message "done"
