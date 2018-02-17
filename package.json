@@ -17,6 +17,9 @@
   "engines": {
     "node": ">= 4.0.0"
   },
+  "bin": {
+    "exeth": "./bin/exeth.js"
+  },
   "scripts": {
     "test": "simpleunit -r ./test"
   },
