@@ -24,7 +24,7 @@ TBD
 
 ## Versions
 
-TBD
+- 0.0.1: Published, exeth global command
 
 ## Contribution
 
