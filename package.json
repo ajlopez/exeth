@@ -29,7 +29,7 @@
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
     "simpledsl": "0.0.6",
-    "solc": "^0.4.19"
+    "solc": "0.4.20"
   },
   "devDependencies": {
     "simpleunit": "0.0.7"
