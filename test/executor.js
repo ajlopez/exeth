@@ -47,6 +47,23 @@ exports['execute with variables'] = function (test) {
 	});
 };
 
+exports['execute async with variables'] = function (test) {
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.value('one', 1);
+	executor.value('two', 2);
+	
+	executor.execute('async cb(null, one + two)', function (err, data) {
+		test.ok(!err);
+		test.equal(data, 3);
+		test.equal(executor.value('result'), 3);
+		
+		test.done();
+	});
+};
+
 exports['execute set variable to constant expression'] = function (test) {
 	test.async();
 	
