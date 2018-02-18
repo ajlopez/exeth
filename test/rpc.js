@@ -25,6 +25,28 @@ exports['execute rpc eth_accounts'] = function (test) {
 	});
 };
 
+exports['execute rpc eth_sum with arguments'] = function (test) {
+	var provider = createProvider();
+	
+	provider.eth_sum = function (a, b) {
+		return a + b;
+	};
+
+	test.async();
+	
+	var executor = exeth.executor();
+	
+	executor.host(provider);
+	
+	executor.execute('rpc eth_sum 20*2 1+1', function (err, data) {
+		test.ok(!err);
+		test.equal(data, 42);
+		test.equal(executor.value('result'), 42);
+		
+		test.done();
+	});
+};
+
 function createProvider() {
 	return {
 		call: function (method, args, cb) {
