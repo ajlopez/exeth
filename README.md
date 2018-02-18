@@ -25,6 +25,7 @@ TBD
 ## Versions
 
 - 0.0.1: Published, exeth global command
+- 0.0.2: Published, async verb, rpc verb
 
 ## Contribution
 
