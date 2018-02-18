@@ -6,7 +6,7 @@ exports['execute accounts'] = function (test) {
 	var provider = createProvider();
 	var accounts = [ '0x01', '0x02', '0x03' ];
 	
-	provider.eth_accounts = function (hash) {
+	provider.eth_accounts = function () {
 		return accounts;
 	};
 
