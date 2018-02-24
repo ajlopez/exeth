@@ -24,7 +24,7 @@
     "test": "simpleunit -r ./test"
   },
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.1",
     "rskapi": "0.0.7",
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
