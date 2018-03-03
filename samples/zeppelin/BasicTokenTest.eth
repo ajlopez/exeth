@@ -1,0 +1,58 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling BasicToken contract..."
+compile "./contracts/token/ERC20/BasicToken.sol"
+
+message "contract function hashes"
+dump contracts.BasicToken.functionHashes
+
+message "compiling BasicTokenMock contract..."
+compile "./contracts/mocks/BasicTokenMock.sol"
+
+message "contract function hashes"
+dump contracts.BasicTokenMock.functionHashes
+
+deploy BasicTokenMock basic1 accounts[0] 100
+
+message "deployed at" instances.basic1.address
+
+message "should return the correct totalSupply after construction"
+
+call basic1 totalSupply()
+
+message "token total supply" result
+
+assert result == 100
+
+message "should return correct balances after transfer"
+
+invoke basic1 transfer(address,uint256) accounts[1] 100
+
+call basic1 balanceOf(address) accounts[0]
+
+message "first account tokens" result
+
+assert result == 0
+
+call basic1 balanceOf(address) accounts[1]
+
+message "second account tokens" result
+
+assert result == 100
+
+message "done"
+
+message "should throw an error when trying to transfer more than balance"
+
+fail
+	invoke basic1 transfer(address,uint256) accounts[1] 101
+end
+
+
