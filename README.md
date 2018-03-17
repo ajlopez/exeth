@@ -7,12 +7,32 @@ Ethereum script executor, WIP.
 Via npm on Node:
 
 ```
-npm install exeth
+npm install -g exeth
 ```
 
 ## Usage
 
-TBD
+```
+exeth <filename>
+```
+
+Example
+```
+exeth counter.eth
+```
+
+The default JSON RPC host is `http://localhost:8545`. To specify the
+host use the flag `-h` or `--host`:
+
+```
+exeth counter.eth -h mymachine.com:4444
+```
+
+To enable logging to show additional message, use the flag `-l` or `--logging`:
+
+```
+exeth counter.eth -l
+```
 
 ## References
 
