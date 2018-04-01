@@ -46,6 +46,7 @@ TBD
 
 - 0.0.1: Published, exeth global command
 - 0.0.2: Published, async verb, rpc verb
+- 0.0.3: Published, https support
 
 ## Contribution
 

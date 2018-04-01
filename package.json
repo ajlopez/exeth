@@ -7,7 +7,7 @@
     "testing",
     "blockchain"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.1",
-    "rskapi": "0.0.7",
+    "rskapi": "0.0.8",
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
     "simpledsl": "0.0.6",
