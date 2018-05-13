@@ -18,6 +18,8 @@ dump contracts.ProofOfExistence.functionHashes
 message "deploy contract"
 deploy ProofOfExistence poe
 
+message "address" instances.poe.address
+
 # unknown hash
 
 call poe exists(bytes32) [1,2,3]
