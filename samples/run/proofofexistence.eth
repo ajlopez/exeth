@@ -1,0 +1,68 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/proofofexistence.sol"
+
+message "contract function hashes"
+dump contracts.ProofOfExistence.functionHashes
+
+# deploy contract
+
+message "deploy contract"
+deploy ProofOfExistence poe
+
+# unknown hash
+
+call poe exists(bytes32) [1,2,3]
+
+assert result == false
+
+call poe timestamps(bytes32) [1,2,3]
+
+assert result == 0
+
+# register hash
+
+invoke poe register(bytes32) [1,2,3]
+
+# known hash
+
+call poe timestamps(bytes32) [1,2,3]
+
+message "timestamp" result
+assert result > 0
+set timestamp1 result
+
+call poe exists(bytes32) [1,2,3]
+
+message "exists" result
+assert result
+
+# register same hash
+
+invoke poe register(bytes32) [1,2,3]
+
+# known hash with original timestamp
+
+call poe timestamps(bytes32) [1,2,3]
+
+message "timestamp" result
+assert result > 0
+set timestamp2 result
+
+call poe exists(bytes32) [1,2,3]
+
+message "exists" result
+assert result
+
+assert timestamp1 == timestamp2
+
+message "done"
+
