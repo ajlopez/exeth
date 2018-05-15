@@ -28,7 +28,7 @@
     "rskapi": "0.0.8",
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
-    "simpledsl": "0.0.6",
+    "simpledsl": "0.0.7",
     "solc": "^0.4.20"
   },
   "devDependencies": {
