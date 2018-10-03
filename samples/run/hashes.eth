@@ -1,0 +1,12 @@
+
+blocknumber
+
+set nblocks result
+
+set n 0
+
+while n <= nblocks
+    block n
+    dump result.hash
+    evaluate n++
+end
