@@ -1,0 +1,27 @@
+
+# retrieve accounts
+
+message "retrieving accounts..."
+accounts
+
+# compile contract
+# (contracts variable has the compiled contract data)
+
+message "compiling contract..."
+compile "./contracts/Empty.sol"
+
+message "contract function hashes"
+dump contracts.Empty.functionHashes
+
+# deploy instances, using default sender: accounts[0], message default result: 0
+# first argument: contract name
+# second argument: new instance name
+
+message "deploy instance..."
+set gas 6800000
+set gasPrice 1
+set from "0x4bb2698e3888e1bd7c325b2626cad2591bf88916"
+deploy Empty empty
+
+
+message "done"
