@@ -36,7 +36,7 @@ exeth counter.eth -l
 
 ## References
 
-TBD
+- [How to generate Private key, public key and address](https://ethereum.stackexchange.com/questions/39384/how-to-generate-private-key-public-key-and-address)
 
 ## Samples
 
