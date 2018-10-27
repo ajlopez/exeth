@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.1",
-    "rskapi": "0.0.8",
+    "rskapi": "0.0.9",
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
     "simpledsl": "0.0.7",
