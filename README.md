@@ -37,6 +37,7 @@ exeth counter.eth -l
 ## References
 
 - [How to generate Private key, public key and address](https://ethereum.stackexchange.com/questions/39384/how-to-generate-private-key-public-key-and-address)
+- [How to validate a private key](https://ethereum.stackexchange.com/questions/1771/how-to-validate-a-private-key)
 
 ## Samples
 
