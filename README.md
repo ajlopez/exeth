@@ -48,6 +48,7 @@ TBD
 - 0.0.1: Published, exeth global command
 - 0.0.2: Published, async verb, rpc verb
 - 0.0.3: Published, https support
+- 0.0.4: Published, using solc 0.5.0
 
 ## Contribution
 

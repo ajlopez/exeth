@@ -7,7 +7,7 @@
     "testing",
     "blockchain"
   ],
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "simpleabi": "0.0.3",
     "simpleargs": "0.0.3",
     "simpledsl": "0.0.7",
-    "solc": "^0.5.7"
+    "solc": "^0.5.0"
   },
   "devDependencies": {
     "simpleunit": "0.0.7"
