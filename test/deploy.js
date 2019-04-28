@@ -22,7 +22,7 @@ exports['compile and deploy contract'] = function (test) {
 		test.equal(txdata.gas, 5000000);
 
 		test.ok(txdata.data);
-		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);
+		test.equal(txdata.data, '0x' + executor.value('contracts').Counter.evm.bytecode.object);
 
 		sent = true;
 		return '0x0200';
@@ -47,9 +47,8 @@ exports['compile and deploy contract'] = function (test) {
 		
 		const contracts = executor.value('contracts');
 		
-		test.equal(Object.keys(contracts).length, 2);
+		test.equal(Object.keys(contracts).length, 1);
 		test.ok(contracts.Counter);
-		test.ok(contracts[filename + ':Counter']);
 		
 		test.ok(executor.value('instances'));
 		

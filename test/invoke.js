@@ -1,6 +1,11 @@
 
 const exeth = require('..');
 const path = require('path');
+const keccak = require('../lib/sha3').keccak_256;
+
+function functionHash(signature) {
+    return keccak(signature).substring(0, 8);
+}
 
 exports['compile. deploy and invoke contract'] = function (test) {
 	test.async();
@@ -25,7 +30,7 @@ exports['compile. deploy and invoke contract'] = function (test) {
 			test.equal(txdata.gas, 5000000);
 			
 			test.ok(txdata.data);
-			test.equal(txdata.data, '0x' + executor.value('contracts').Counter.bytecode);
+			test.equal(txdata.data, '0x' + executor.value('contracts').Counter.evm.bytecode.object);
 			
 			sent = true;
 			times++;
@@ -36,7 +41,7 @@ exports['compile. deploy and invoke contract'] = function (test) {
 		if (times === 1) {
 			test.ok(txdata.data);
 			test.equal(txdata.data.length, 10);
-			test.equal(txdata.data, '0x' + executor.value('contracts').Counter.functionHashes["increment()"]);
+			test.equal(txdata.data, '0x' + functionHash("increment()"));
 
 			invoked = true;
 			times++;
@@ -65,9 +70,8 @@ exports['compile. deploy and invoke contract'] = function (test) {
 		
 		const contracts = executor.value('contracts');
 		
-		test.equal(Object.keys(contracts).length, 2);
+		test.equal(Object.keys(contracts).length, 1);
 		test.ok(contracts.Counter);
-		test.ok(contracts[filename + ':Counter']);
 		
 		test.ok(executor.value('instances'));
 		

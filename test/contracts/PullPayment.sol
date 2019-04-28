@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity >=0.4.21 <0.6.0;
 
 
 import './SafeMath.sol';
@@ -29,11 +29,11 @@ contract PullPayment {
   * @dev withdraw accumulated balance, called by payee.
   */
   function withdrawPayments() public {
-    address payee = msg.sender;
+    address payable payee = msg.sender;
     uint256 payment = payments[payee];
 
     require(payment != 0);
-    require(this.balance >= payment);
+    require(address(this).balance >= payment);
 
     totalPayments = totalPayments.sub(payment);
     payments[payee] = 0;

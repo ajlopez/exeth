@@ -16,11 +16,9 @@ exports['compile contract'] = function (test) {
 		
 		const contracts = executor.value('contracts');
 		
-		test.equal(Object.keys(contracts).length, 2);
+		test.equal(Object.keys(contracts).length, 1);
 		test.ok(contracts.Counter);
-		test.ok(contracts[filename + ':Counter']);
-
-		test.equal(contracts.Counter.fullname, 'counter.sol:Counter');
+        test.ok(contracts.Counter.evm);
 		
 		test.done();
 	});
@@ -36,11 +34,10 @@ exports['execute compile script'] = function (test) {
 
 		const contracts = executor.value('contracts');
 		
-		test.equal(Object.keys(contracts).length, 4);
+		test.equal(Object.keys(contracts).length, 2);
 		test.ok(contracts.MetaCoin);
 
-		test.equal(contracts.MetaCoin.fullname, 'MetaCoin.sol:MetaCoin');
-		test.ok(contracts.MetaCoin.bytecode.indexOf('_') >= 0);
+		test.equal(typeof contracts.MetaCoin.evm.bytecode.object, 'string');
 		
 		test.done();
 		
@@ -58,11 +55,10 @@ exports['execute link script'] = function (test) {
 
 		const contracts = executor.value('contracts');
 		
-		test.equal(Object.keys(contracts).length, 4);
+		test.equal(Object.keys(contracts).length, 2);
 		test.ok(contracts.MetaCoin);
 
-		test.equal(contracts.MetaCoin.fullname, 'MetaCoin.sol:MetaCoin');
-		test.ok(contracts.MetaCoin.bytecode.indexOf('_') < 0);
+		test.ok(contracts.MetaCoin.evm.bytecode.object.indexOf('_') < 0);
 		
 		test.done();
 	});
