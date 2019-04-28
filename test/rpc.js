@@ -1,10 +1,10 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['execute rpc eth_accounts'] = function (test) {
-	var provider = createProvider();
-	var accounts = [ '0x01', '0x02', '0x03' ];
+	const provider = createProvider();
+	const accounts = [ '0x01', '0x02', '0x03' ];
 	
 	provider.eth_accounts = function () {
 		return accounts;
@@ -12,7 +12,7 @@ exports['execute rpc eth_accounts'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -26,7 +26,7 @@ exports['execute rpc eth_accounts'] = function (test) {
 };
 
 exports['execute rpc eth_sum with arguments'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	provider.eth_sum = function (a, b) {
 		return a + b;
@@ -34,7 +34,7 @@ exports['execute rpc eth_sum with arguments'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	

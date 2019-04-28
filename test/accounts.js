@@ -1,10 +1,10 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['execute accounts'] = function (test) {
-	var provider = createProvider();
-	var accounts = [ '0x01', '0x02', '0x03' ];
+	const provider = createProvider();
+	const accounts = [ '0x01', '0x02', '0x03' ];
 	
 	provider.eth_accounts = function () {
 		return accounts;
@@ -12,7 +12,7 @@ exports['execute accounts'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -27,8 +27,8 @@ exports['execute accounts'] = function (test) {
 };
 
 exports['execute accounts script'] = function (test) {
-	var provider = createProvider();
-	var accounts = [ '0x01', '0x02', '0x03' ];
+	const provider = createProvider();
+	const accounts = [ '0x01', '0x02', '0x03' ];
 	
 	provider.eth_accounts = function (hash) {
 		return accounts;
@@ -36,7 +36,7 @@ exports['execute accounts script'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -51,7 +51,7 @@ exports['execute accounts script'] = function (test) {
 };
 
 exports['execute balance'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	test.async();
 	
@@ -63,7 +63,7 @@ exports['execute balance'] = function (test) {
 	
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -77,7 +77,7 @@ exports['execute balance'] = function (test) {
 };
 
 exports['execute accountnew'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	test.async();
 	
@@ -88,7 +88,7 @@ exports['execute accountnew'] = function (test) {
 	
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -102,11 +102,11 @@ exports['execute accountnew'] = function (test) {
 };
 
 exports['execute accountnew and account unlock'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	test.async();
 	
-	var unlocked = false;
+	let unlocked = false;
 	
 	provider.personal_newAccount = function (passphrase) {
 		test.equal(passphrase, 'passphrase');
@@ -122,7 +122,7 @@ exports['execute accountnew and account unlock'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	

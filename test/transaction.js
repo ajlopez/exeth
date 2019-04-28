@@ -1,13 +1,13 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['execute transfer'] = function (test) {
 	test.async();
 	
-	var provider = createProvider();
-	var sent = false;
-	var retr = false;
+	const provider = createProvider();
+	let sent = false;
+	let retr = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -28,7 +28,7 @@ exports['execute transfer'] = function (test) {
 		return { hash: txhash };
 	};
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -47,9 +47,9 @@ exports['execute transfer'] = function (test) {
 exports['execute transfer with data'] = function (test) {
 	test.async();
 	
-	var provider = createProvider();
-	var sent = false;
-	var retr = false;
+	const provider = createProvider();
+	let sent = false;
+	let retr = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -71,7 +71,7 @@ exports['execute transfer with data'] = function (test) {
 		return { hash: txhash };
 	};
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -90,9 +90,9 @@ exports['execute transfer with data'] = function (test) {
 exports['execute transfer with data using 0x prefix'] = function (test) {
 	test.async();
 	
-	var provider = createProvider();
-	var sent = false;
-	var retr = false;
+	const provider = createProvider();
+	let sent = false;
+	let retr = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -114,7 +114,7 @@ exports['execute transfer with data using 0x prefix'] = function (test) {
 		return { hash: txhash };
 	};
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -133,8 +133,8 @@ exports['execute transfer with data using 0x prefix'] = function (test) {
 exports['execute send'] = function (test) {
 	test.async();
 	
-	var provider = createProvider();
-	var sent = false;
+	const provider = createProvider();
+	let sent = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -147,7 +147,7 @@ exports['execute send'] = function (test) {
 		return '0x100';
 	};
 
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -165,8 +165,8 @@ exports['execute send'] = function (test) {
 exports['execute send with data'] = function (test) {
 	test.async();
 	
-	var provider = createProvider();
-	var sent = false;
+	const provider = createProvider();
+	let sent = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -180,7 +180,7 @@ exports['execute send with data'] = function (test) {
 		return '0x100';
 	};
 
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	

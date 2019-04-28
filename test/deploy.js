@@ -1,17 +1,17 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['compile and deploy contract'] = function (test) {
 	test.async();
 	
-	var filename = path.join(__dirname, 'contracts', 'counter.sol');
+	const filename = path.join(__dirname, 'contracts', 'counter.sol');
 	
-	var executor = exeth.executor();
-	var provider = createProvider();
+	const executor = exeth.executor();
+	const provider = createProvider();
 
-	var sent = false;
-	var retr = false;
+	let sent = false;
+	let retr = false;
 	
 	provider.eth_sendTransaction = function (txdata) {
 		test.ok(txdata);
@@ -45,7 +45,7 @@ exports['compile and deploy contract'] = function (test) {
 		
 		test.ok(executor.value('contracts'));
 		
-		var contracts = executor.value('contracts');
+		const contracts = executor.value('contracts');
 		
 		test.equal(Object.keys(contracts).length, 2);
 		test.ok(contracts.Counter);
@@ -53,7 +53,7 @@ exports['compile and deploy contract'] = function (test) {
 		
 		test.ok(executor.value('instances'));
 		
-		var instances = executor.value('instances');
+		const instances = executor.value('instances');
 		
 		test.equal(Object.keys(instances).length, 1);
 		test.ok(instances.counter);

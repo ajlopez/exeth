@@ -1,11 +1,11 @@
 
-var exeth = require('..');
+const exeth = require('..');
 
 exports['execute message with an argument'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
-	var done = false;
+	const executor = exeth.executor();
+	let done = false;
 	
 	executor.logger({
 		log: function() {
@@ -26,8 +26,8 @@ exports['execute message with an argument'] = function (test) {
 exports['execute message with two arguments'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
-	var done = false;
+	const executor = exeth.executor();
+	let done = false;
 	
 	executor.logger({
 		log: function() {

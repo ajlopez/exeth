@@ -1,10 +1,10 @@
 
-var exeth = require('..');
+const exeth = require('..');
 
 exports['execute assert'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.execute('assert 2 > 1', function (err, data) {
 		test.ok(!err);
@@ -17,7 +17,7 @@ exports['execute assert'] = function (test) {
 exports['execute failed assert'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.execute('assert 2 < 1', function (err, data) {
 		test.ok(err);

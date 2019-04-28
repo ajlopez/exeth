@@ -1,11 +1,11 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['execute script with two execute commands'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.executeFile(getScriptFile('execute'), function (err, data) {
 		test.ok(!err);
@@ -20,7 +20,7 @@ exports['execute script with two execute commands'] = function (test) {
 exports['execute script with many nested execute commands'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.executeFile(getScriptFile('executemany'), function (err, data) {
 		test.ok(!err);

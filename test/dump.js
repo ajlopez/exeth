@@ -1,11 +1,11 @@
 
-var exeth = require('..');
+const exeth = require('..');
 
 exports['execute dump with simple value'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
-	var done = false;
+	const executor = exeth.executor();
+	let done = false;
 	
 	executor.logger({
 		log: function() {
@@ -26,11 +26,11 @@ exports['execute dump with simple value'] = function (test) {
 exports['execute dump with object'] = function (test) {
 	test.async();
 	
-	var obj = { name: "Adam", age: 900 };
-	var json = JSON.stringify(obj, null, 4);
+	const obj = { name: "Adam", age: 900 };
+	const json = JSON.stringify(obj, null, 4);
 	
-	var executor = exeth.executor();
-	var done = false;
+	const executor = exeth.executor();
+	let done = false;
 	
 	executor.logger({
 		log: function() {

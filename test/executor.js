@@ -1,15 +1,15 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['get undefined value'] = function (test) {
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	test.equal(executor.value('from'), null);
 };
 
 exports['set and get value'] = function (test) {
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.value('host', 'http://localhost:8545');
 
@@ -19,7 +19,7 @@ exports['set and get value'] = function (test) {
 exports['execute evaluate'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.execute('evaluate 1+2', function (err, data) {
 		test.ok(!err);
@@ -33,7 +33,7 @@ exports['execute evaluate'] = function (test) {
 exports['execute with variables'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.value('one', 1);
 	executor.value('two', 2);
@@ -50,7 +50,7 @@ exports['execute with variables'] = function (test) {
 exports['execute async with variables'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.value('one', 1);
 	executor.value('two', 2);
@@ -67,7 +67,7 @@ exports['execute async with variables'] = function (test) {
 exports['execute set variable to constant expression'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.execute('set x 3', function (err, data) {
 		test.ok(!err);
@@ -81,7 +81,7 @@ exports['execute set variable to constant expression'] = function (test) {
 exports['execute set variable to arithmetic expression using variables'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.value('one', 1);
 	executor.value('two', 2);

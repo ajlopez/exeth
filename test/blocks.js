@@ -1,9 +1,9 @@
 
-var exeth = require('..');
-var path = require('path');
+const exeth = require('..');
+const path = require('path');
 
 exports['execute blocknumber'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	provider.eth_blockNumber = function () {
 		return '0x2a';
@@ -11,7 +11,7 @@ exports['execute blocknumber'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	
@@ -25,7 +25,7 @@ exports['execute blocknumber'] = function (test) {
 };
 
 exports['execute block'] = function (test) {
-	var provider = createProvider();
+	const provider = createProvider();
 	
 	provider.eth_getBlockByNumber = function (number) {
 		return {
@@ -35,7 +35,7 @@ exports['execute block'] = function (test) {
 
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
 	executor.host(provider);
 	

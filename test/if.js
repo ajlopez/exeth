@@ -1,12 +1,12 @@
 
-var exeth = require('..');
+const exeth = require('..');
 
 exports['execute if'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
-	var pgm = [
+	const pgm = [
 		"if 1 % 2 == 1",
 		"set odd true",
 		"end",

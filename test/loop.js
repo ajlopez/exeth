@@ -1,12 +1,12 @@
 
-var exeth = require('..');
+const exeth = require('..');
 
 exports['execute loop with break'] = function (test) {
 	test.async();
 	
-	var executor = exeth.executor();
+	const executor = exeth.executor();
 	
-	var pgm = [
+	const pgm = [
 		"set n 0",
 		"loop",
 			"if n >= 10",
