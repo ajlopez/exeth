@@ -11,9 +11,8 @@ message "compiling contract..."
 compile "./contracts/math.sol"
 
 message "contract function hashes"
-dump contracts.Math.functionHashes
-
-dump contracts.Math
+dump contracts.Math.evm.methodIdentifiers
+# dump contracts.Math
 
 # deploy instances, using default sender: accounts[0], message default result: 0
 # first argument: contract name

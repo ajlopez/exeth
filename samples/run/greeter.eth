@@ -9,7 +9,7 @@ accounts
 
 message "compiling contract..."
 compile "./contracts/greeter.sol"
-dump contracts.Greeter.functionHashes
+dump contracts.Greeter.evm.methodIdentifiers
 
 # deploy instances, using default sender: accounts[0], message default result: 0
 # first argument: contract name
